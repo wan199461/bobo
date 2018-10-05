@@ -38,7 +38,7 @@ public class RestfulVerticle extends AbstractVerticle{
 	}
 	
 	// Get 请求处理handler
-	private void handleGet(RoutingContext context) {
+	private void handleGet(RoutingContext context) { 
 		
 		String bodyType = context.getAcceptableContentType();
 		System.err.println(bodyType);
