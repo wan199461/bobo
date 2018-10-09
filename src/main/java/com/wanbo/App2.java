@@ -10,7 +10,7 @@ public class App2 {
 	
 //		testFinally();
 //		testData();
-		testInteger();
+//		testInteger();
 		
 	}
 	
