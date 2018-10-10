@@ -1,5 +1,7 @@
 package com.wanbo;
 
+import java.io.ObjectOutputStream;
+
 import com.alibaba.fastjson.JSON;
 
 public class App2 {
@@ -13,6 +15,7 @@ public class App2 {
 //		testInteger();
 		
 	}
+	
 	
 	
 	private static void testInteger() {
