@@ -1,17 +1,21 @@
 package com.wanbo.vertx.vert1;
 
+import java.util.Set;
+
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
+import io.vertx.ext.web.Cookie;
 import io.vertx.ext.web.Router;
+
 
 /**
  * vert web get请求测试
  *
  */
-public class RestfulVerticle extends AbstractVerticle {
+public class RestfulVerticle extends AbstractVerticle { 
 
   @Override
   public void start(Future<Void> startFuture) throws Exception {
@@ -103,5 +107,20 @@ public class RestfulVerticle extends AbstractVerticle {
     ReqControl.release();
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
