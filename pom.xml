@@ -19,6 +19,15 @@
 	</properties>
 
 
+  <repositories>        
+        <!-- Repository where we can found the storm dependencies  -->
+        <repository>
+            <id>clojars.org</id>
+            <url>http://clojars.org/repo</url>
+        </repository>
+  </repositories>
+  
+
 	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
@@ -48,5 +57,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		
+		        <!-- Storm Dependency -->
+        <dependency> 
+          <groupId>storm</groupId>
+          <artifactId>storm</artifactId>
+          <version>0.7.1</version>
+       </dependency>
 	</dependencies>
 </project>
