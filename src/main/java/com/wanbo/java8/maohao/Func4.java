@@ -4,7 +4,7 @@ public class Func4 {
   
   public void doWork() {
       
-    new Thread(this::execRun, "Thread -1 ");   // 4.用于实现接口只有一个方法的接口(函数接口/功能接口)
+    new Thread(this::execRun, "Thread -1 ").start();   // 4.用于实现接口只有一个方法的接口(函数接口/功能接口)
          
   }
   
