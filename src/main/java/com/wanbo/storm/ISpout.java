@@ -47,13 +47,14 @@ public class ISpout extends BaseRichSpout{
 	 * 模拟向队列放入字符串
 	 */
 	private void doWork() {
+	   int count = 0;
        while(1 > 0) {
-   		double random = Math.random();
+//   		double random = Math.random();
    		try {
-   			String data = "info:" + random;
+   			String data = "info:" + count++;
    			queue.put(data);
    			System.err.println("Putting:" + data);
-   			Thread.sleep(1000);
+   			Thread.sleep(2000);
    		} catch (InterruptedException e) {
    			e.printStackTrace();
    		}

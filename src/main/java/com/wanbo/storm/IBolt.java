@@ -27,7 +27,7 @@ public class IBolt extends BaseBasicBolt {
 		// TODO Auto-generated method stub
         String data = input.getString(0);
         MessageId msgId = input.getMessageId();
-        System.err.println(msgId + ":" + data);
+        System.err.println("Bolt1" + ":" + data);
 	}
 
 	@Override

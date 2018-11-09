@@ -9,6 +9,9 @@ public class App2 {
 	private static int data;
 
 	public static void main(String[] args) {
+	  
+	  Object ob = null;
+	  String data = (String)ob;
 	
 //		testFinally();
 //		testData();
