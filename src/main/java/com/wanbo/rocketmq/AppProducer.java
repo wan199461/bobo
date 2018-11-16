@@ -27,7 +27,7 @@ public class AppProducer {
         producer.start();
 
         //循环发送消息
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 15000; i++){
             Message msg = new Message( //
                 // Message 所属的 Topic
                 "fintell-monitor",
