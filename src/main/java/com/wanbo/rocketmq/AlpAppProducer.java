@@ -1,15 +1,18 @@
 package com.wanbo.rocketmq;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.UUID;
 
+import com.alibaba.fastjson.JSONObject;
 import com.aliyun.openservices.ons.api.Message;
 import com.aliyun.openservices.ons.api.ONSFactory;
 import com.aliyun.openservices.ons.api.Producer;
 import com.aliyun.openservices.ons.api.PropertyKeyConst;
 import com.aliyun.openservices.ons.api.SendResult;
 
-public class AppProducer {
+public class AlpAppProducer {
 
 	public static void main(String[] args) {
 		Properties properties = new Properties();
@@ -28,15 +31,15 @@ public class AppProducer {
 		producer.start();
 
 		// 循环发送消息
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 6; i++) {
 			Message msg = new Message( //
 					// Message 所属的 Topic
-					"fintell-monitor",
+					"monitor-alp",
 					// Message Tag 可理解为 Gmail 中的标签，对消息进行再归类，方便 Consumer 指定过滤条件在 MQ 服务器过滤
 					"monitor",
 					// Message Body 可以是任何二进制形式的数据， MQ 不做任何干预，
 					// 需要 Producer 与 Consumer 协商好一致的序列化和反序列化方式
-					Config.data().getBytes());
+					generateAlpData().getBytes());
 			// 设置代表消息的业务关键属性，请尽可能全局唯一。
 			// 以方便您在无法正常收到消息情况下，可通过阿里云服务器管理控制台查询消息并补发
 			// 注意：不设置也不会影响消息正常收发
@@ -60,4 +63,24 @@ public class AppProducer {
 		// 注意：如果不销毁也没有问题
 		producer.shutdown();
 	}
+	
+	
+	private static String generateAlpData() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		JSONObject obj = new JSONObject();
+		obj.put("eventType", "REGISTER");
+		obj.put("eventTime", sdf.format(new Date()));
+		obj.put("msgId", UUID.randomUUID().toString());
+		
+		JSONObject data = new JSONObject();
+		data.put("userId", String.valueOf(Math.random()));
+		data.put("userName", String.valueOf(Math.random()));
+		data.put("phone", String.valueOf(Math.random()));
+		obj.put("data", data);
+		String msg = obj.toJSONString();
+		System.out.println("MSG:" + msg);
+		return msg;
+	}
+	
 }
+
