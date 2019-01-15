@@ -14,9 +14,9 @@ public class AppProducer {
 	public static void main(String[] args) {
 		Properties properties = new Properties();
 		// AccessKey 阿里云身份验证，在阿里云服务器管理控制台创建
-		properties.put(PropertyKeyConst.AccessKey, "LTAInJnvvpeJvM3L");
+		properties.put(PropertyKeyConst.AccessKey, "LTAI3297m9ZJIp2T");
 		// SecretKey 阿里云身份验证，在阿里云服务器管理控制台创建
-		properties.put(PropertyKeyConst.SecretKey, "p9oMpWQjgrKM1kGdWsYS8wlzEgBYzy");
+		properties.put(PropertyKeyConst.SecretKey, "rbTce2Lg25GSUNhX2ujw57xPvtKPke");
 		// 设置发送超时时间，单位毫秒
 		properties.setProperty(PropertyKeyConst.SendMsgTimeoutMillis, "3000");
 		// 设置 TCP 接入域名（此处以公共云生产环境为例）
@@ -28,10 +28,10 @@ public class AppProducer {
 		producer.start();
 
 		// 循环发送消息
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 1; i++) {
 			Message msg = new Message( //
 					// Message 所属的 Topic
-					"fintell-monitor",
+					"monitor-fintell",
 					// Message Tag 可理解为 Gmail 中的标签，对消息进行再归类，方便 Consumer 指定过滤条件在 MQ 服务器过滤
 					"monitor",
 					// Message Body 可以是任何二进制形式的数据， MQ 不做任何干预，

@@ -15,11 +15,11 @@ import com.aliyun.openservices.ons.api.SendResult;
 public class AlpAppProducer {
 
 	public static void main(String[] args) {
-		Properties properties = new Properties();
+/*		Properties properties = new Properties();
 		// AccessKey 阿里云身份验证，在阿里云服务器管理控制台创建
-		properties.put(PropertyKeyConst.AccessKey, "LTAInJnvvpeJvM3L");
+		properties.put(PropertyKeyConst.AccessKey, "LTAI3297m9ZJIp2T");
 		// SecretKey 阿里云身份验证，在阿里云服务器管理控制台创建
-		properties.put(PropertyKeyConst.SecretKey, "p9oMpWQjgrKM1kGdWsYS8wlzEgBYzy");
+		properties.put(PropertyKeyConst.SecretKey, "rbTce2Lg25GSUNhX2ujw57xPvtKPke");
 		// 设置发送超时时间，单位毫秒
 		properties.setProperty(PropertyKeyConst.SendMsgTimeoutMillis, "3000");
 		// 设置 TCP 接入域名（此处以公共云生产环境为例）
@@ -31,10 +31,10 @@ public class AlpAppProducer {
 		producer.start();
 
 		// 循环发送消息
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 1; i++) {
 			Message msg = new Message( //
 					// Message 所属的 Topic
-					"monitor-alp",
+					"monitor-alp-test",
 					// Message Tag 可理解为 Gmail 中的标签，对消息进行再归类，方便 Consumer 指定过滤条件在 MQ 服务器过滤
 					"monitor",
 					// Message Body 可以是任何二进制形式的数据， MQ 不做任何干预，
@@ -61,17 +61,18 @@ public class AlpAppProducer {
 
 		// 在应用退出前，销毁 Producer 对象
 		// 注意：如果不销毁也没有问题
-		producer.shutdown();
+		producer.shutdown();*/
+	    
+	    generateAlpData();
 	}
-	
-	
-	private static String generateAlpData() {
+
+	public static String generateAlpData() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		JSONObject obj = new JSONObject();
-		obj.put("eventType", "REGISTER");
+		obj.put("eventType", "LOAN_BEGIN");
 		obj.put("eventTime", sdf.format(new Date()));
 		obj.put("msgId", UUID.randomUUID().toString());
-		
+
 		JSONObject data = new JSONObject();
 		data.put("userId", String.valueOf(Math.random()));
 		data.put("userName", String.valueOf(Math.random()));
@@ -81,6 +82,4 @@ public class AlpAppProducer {
 		System.out.println("MSG:" + msg);
 		return msg;
 	}
-	
 }
-
