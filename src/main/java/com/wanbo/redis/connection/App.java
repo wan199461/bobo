@@ -10,7 +10,9 @@ public class App {
         con.open();
 
         System.out.println(con.auth("root"));
-        System.out.println(con.ping());
+//        System.out.println(con.ping());
+        
+        System.out.println(con.commonCall(CommandEnum.PING, null));
     }
 
 }

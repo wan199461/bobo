@@ -59,4 +59,32 @@ public class RedisConnect {
         return new String(bytes);
     }
 
+    /**
+     * 
+     * @param order
+     * @param param
+     * @return
+     * @throws IOException
+     */
+    public String commonCall(CommandEnum order, String[] param) throws IOException {
+        int paramnum = order.getParamnum(); // 参数的个数
+        String cmd = order.getCommand();
+
+        StringBuilder commands = new StringBuilder();
+        commands.append(COMMAND_LEN_BEGIN).append(paramnum + 1).append(LINE_FEED); // 总的命令个数位参数数量加上命令(1个)
+        commands.append(PARAM_LEN_BEGIN).append(cmd.length()).append(LINE_FEED);
+        commands.append(cmd).append(LINE_FEED);
+        for (int i = 0; i < paramnum; i++) {
+            String cmdi = param[i];
+            commands.append(COMMAND_LEN_BEGIN).append(cmdi).append(LINE_FEED);
+            commands.append(PARAM_LEN_BEGIN).append(cmdi.length()).append(LINE_FEED);
+            commands.append(cmdi).append(LINE_FEED);
+        }
+
+        os.write(commands.toString().getBytes());
+        byte[] bytes = new byte[BUFF_SIZE];
+        is.read(bytes);
+        return new String(bytes);
+    }
+
 }

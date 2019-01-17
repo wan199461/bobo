@@ -2,7 +2,7 @@ package com.wanbo.redis.connection;
 
 public enum CommandEnum {
 
-    PING("PING", 0), SET("SET", 2), AUTH("AUTH", 1);
+    PING("PING", 0), SET("SET", 2), AUTH("AUTH", 1), GET("GET", 1);
 
     private String command;
 
