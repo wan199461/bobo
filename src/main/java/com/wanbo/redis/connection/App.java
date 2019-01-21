@@ -13,6 +13,12 @@ public class App {
 //        System.out.println(con.ping());
         
         System.out.println(con.commonCall(CommandEnum.PING, null));
+        
+        String[] params = {"hehe", "eretr"};
+        System.out.println(con.commonCall(CommandEnum.SET, params));
+        
+        String[] params1 = {"hehe"};
+        System.out.println(con.commonCall(CommandEnum.GET, params1));
     }
 
 }
