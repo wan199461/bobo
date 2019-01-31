@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 
 public class App {
 
-    public static void main(String[] args) throws UnknownHostException, IOException {
+    public static void main(String[] args) throws Exception {
         RedisConnect con = new RedisConnect();
         con.open();
 
@@ -15,10 +15,10 @@ public class App {
         System.out.println(con.commonCall(CommandEnum.PING, null));
         
         String[] params = {"hehe", "eretr"};
-        System.out.println(con.commonCall(CommandEnum.SET, params));
+//        System.out.println(con.commonCall(CommandEnum.SET, params));
         
         String[] params1 = {"hehe"};
-        System.out.println(con.commonCall(CommandEnum.GET, params1));
+        System.out.println("Get:" + con.commonCall(CommandEnum.GET, params1));
     }
 
 }

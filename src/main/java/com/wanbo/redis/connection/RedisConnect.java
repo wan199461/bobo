@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 public class RedisConnect {
 
     private static Logger logger = LoggerFactory.getLogger(RedisConnect.class);
+    
+    private static final int RETRY_TIMES = 5;
 
     private final int BUFF_SIZE = 1024;
 
@@ -64,9 +66,9 @@ public class RedisConnect {
      * @param order
      * @param param
      * @return
-     * @throws IOException
+     * @throws Exception 
      */
-    public String commonCall(CommandEnum order, String... param) throws IOException {
+    public String commonCall(CommandEnum order, String... param) throws Exception {
         synchronized (this) {
             int paramnum = order.getParamnum(); // 参数的个数
             String cmd = order.getCommand();
@@ -83,8 +85,15 @@ public class RedisConnect {
             System.out.println(commands.toString());
             os.write(commands.toString().getBytes());
             byte[] bytes = new byte[BUFF_SIZE];
-            is.read(bytes);
-            return new String(bytes);
+            int count = 0;
+            while(count < RETRY_TIMES) {
+                if(is.available() > 0) {
+                    is.read(bytes);
+                    return new String(bytes);
+                }
+                wait(100);
+            }
+            throw new RedisWaitOutOfTimeException();           
         }
     }
 
