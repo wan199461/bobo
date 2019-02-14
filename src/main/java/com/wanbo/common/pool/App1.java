@@ -11,12 +11,13 @@ public class App1 {
     public static int version = 1;
 
     public static void main(String[] args) {
-        
-        
 
         PooledObjectFactory<DataModel> factory = new DataFactory();
         GenericObjectPoolConfig<DataModel> genericConfig = new GenericObjectPoolConfig<DataModel>();
         genericConfig.setMaxTotal(10);
+//        genericConfig.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
+//        genericConfig
+        
         AbandonedConfig abandonedConfig = new AbandonedConfig();
 
         CommonObjectPool pool = new CommonObjectPool(factory, genericConfig, abandonedConfig);
