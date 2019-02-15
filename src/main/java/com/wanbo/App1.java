@@ -1,25 +1,10 @@
 package com.wanbo;
 
-import java.util.Map;
-
-import com.alibaba.fastjson.JSON;
-import com.google.common.collect.Maps;
-
 public class App1 {
 
     public static void main(String[] args) {
 //    	 String msg = "awe";
 //    	 getMaxSizeFromString(msg.toCharArray());
-        
-        Map<String, Integer> data = Maps.newHashMap();
-        
-        data.put("a", hash("a"));
-        data.put("b", hash("b"));
-        data.put("c", hash("c"));
-        data.put("a1", hash("a1"));
-        data.put("a2", hash("a2"));
-        
-        System.out.println(JSON.toJSONString(data));
     }
 
     static final int hash(Object key) {
