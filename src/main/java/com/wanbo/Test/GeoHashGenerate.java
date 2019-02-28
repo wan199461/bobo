@@ -1,7 +1,7 @@
 package com.wanbo.Test;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson.JSON;
 
 import ch.hsr.geohash.GeoHash;
-import shade.storm.com.google.common.collect.Lists;
 
 public class GeoHashGenerate {
 
@@ -45,10 +44,16 @@ public class GeoHashGenerate {
     public static List<String> squareGeoHash(GeoHash geohash, int x) {
         long start = System.currentTimeMillis();
         try {
-            List<GeoHash> crosswiseList = Lists.newArrayList(geohash);
+//            List<GeoHash> crosswiseList = Lists.newArrayList(geohash);
+            List<GeoHash> crosswiseList = new ArrayList<GeoHash>();
+            crosswiseList.add(geohash);
+
             GeoHash left = null;
             GeoHash right = null;
-            for (int i = 0; i < Math.floorDiv(x, 2); i++) {
+            
+            int floor = (int)Math.floor((x*1.0)/2);
+//            int floor = Math.floorDiv(x, 2);
+            for (int i = 0; i < floor; i++) {
                 if (left == null || right == null) {
                     left = geohash.getWesternNeighbour();
                     right = geohash.getEasternNeighbour();
@@ -63,7 +68,10 @@ public class GeoHashGenerate {
                 crosswiseList.remove(crosswiseList.size() - 1);
             }
 
-            List<GeoHash> g15x15List = Lists.newArrayList(crosswiseList);
+//            List<GeoHash> g15x15List = Lists.newArrayList(crosswiseList);
+            List<GeoHash> g15x15List = new ArrayList<GeoHash>();
+            g15x15List.addAll(crosswiseList);
+
             for (GeoHash crosswise : crosswiseList) {
                 GeoHash up = null;
                 GeoHash below = null;
@@ -83,7 +91,12 @@ public class GeoHashGenerate {
                 }
 
             }
-            List<String> geohashList = g15x15List.stream().map(geo -> geo.toBase32()).collect(Collectors.toList());
+//            List<String> geohashList = g15x15List.stream().map(geo -> geo.toBase32()).collect(Collectors.toList());
+            List<String> geohashList = new ArrayList<String>();
+            for (GeoHash ele : g15x15List) {
+                geohashList.add(ele.toBase32());
+            }
+
             LOGGER.info("[squareGeoHash]geohashList={}.", JSON.toJSONString(geohashList));
             return geohashList;
         } catch (Exception e) {
