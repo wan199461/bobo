@@ -109,6 +109,12 @@
 			<version>9.4.14.v20181114</version>
 		</dependency>
 
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.6</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

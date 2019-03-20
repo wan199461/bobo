@@ -9,7 +9,7 @@ public class Vert1Start {
 	public static void main(String[] args) {
 		System.err.println("vert begin");
 		VertxOptions options = new VertxOptions();
-		options.setEventLoopPoolSize(10);
+		options.setEventLoopPoolSize(1);
 
 		DeploymentOptions  depOptions = new DeploymentOptions();
 		depOptions.setWorker(true);
