@@ -2,9 +2,12 @@ package com.wanbo.java8.maohao;
 
 public class App1 {
   
+    
+ private static IDelegate<String, String> delegate1 = Car::getMsg;  //  1.访问静态方法
+    
   public static void main(String...strings) {
     
-    IDelegate<String, String> delegate1 = Car::getMsg;  //  1.访问静态方法
+    
     String res1 = delegate1.delegate("2333");
     
     Car car = new Car();
