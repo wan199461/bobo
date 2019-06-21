@@ -7,6 +7,8 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import com.alibaba.fastjson.JSON;
 
 public class App1 {
+    
+    //1. 使用apache提供的
 
     public static int version = 1;
 
@@ -15,8 +17,6 @@ public class App1 {
         PooledObjectFactory<DataModel> factory = new DataFactory();
         GenericObjectPoolConfig<DataModel> genericConfig = new GenericObjectPoolConfig<DataModel>();
         genericConfig.setMaxTotal(10);
-//        genericConfig.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
-//        genericConfig
         
         AbandonedConfig abandonedConfig = new AbandonedConfig();
 
