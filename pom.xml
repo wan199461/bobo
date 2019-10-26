@@ -64,11 +64,11 @@
 			<version>0.7.1</version> </dependency> -->
 
 		<!-- jstorm -->
-		<dependency>
-			<groupId>com.alibaba.jstorm</groupId>
-			<artifactId>jstorm-core</artifactId>
-			<version>2.2.1</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.alibaba.jstorm</groupId> -->
+<!-- 			<artifactId>jstorm-core</artifactId> -->
+<!-- 			<version>2.2.1</version> -->
+<!-- 		</dependency> -->
 
 		<!--rocketmq -->
 		<dependency>

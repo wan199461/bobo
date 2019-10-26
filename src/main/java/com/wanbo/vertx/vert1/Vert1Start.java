@@ -18,7 +18,7 @@ public class Vert1Start {
 		Vertx vertx = Vertx.vertx(options);
         
 //		vertx.deployVerticle(new MyVertCycle());  // 测试用vertCycle		
-		vertx.deployVerticle(new RestfulVerticle(), depOptions);  // 处理Get请求web服务器
+//		vertx.deployVerticle(new RestfulVerticle(), depOptions);  // 处理Get请求web服务器
 		
 	}
 
